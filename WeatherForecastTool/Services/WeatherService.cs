@@ -31,10 +31,12 @@ namespace WeatherApp.Services
                 forecastResponse.EnsureSuccessStatusCode();
                 var forecastContent = await forecastResponse.Content.ReadAsStringAsync();
                 var forecastData = JsonSerializer.Deserialize<WeatherForecastApiResponse>(forecastContent, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
-
+                var dateFromResponse = DateTimeOffset.FromUnixTimeSeconds(weatherResponse.Dt).DateTime.AddHours(8);
+                var date = dateFromResponse.ToString("ddd, MMM dd HH:mm");
                 // Map current weather data
                 var weatherData = new WeatherData
                 {
+                    Date = date,
                     City = weatherResponse.Name,
                     Country = weatherResponse.Sys.Country,
                     Temperature = weatherResponse.Main.Temp,

@@ -18,6 +18,7 @@
                 <div class="card-body">
                     <!-- Current Weather Info -->
                     <div class="text-center mb-4">
+                        <h2>@Model.Date</h2>
                         <img src="@($"http://openweathermap.org/img/wn/{Model.Icon}@2x.png")" alt="Weather Icon" class="mb-2" />
                         <h2>@Math.Round(Model.Temperature)°C</h2>
                         <p class="lead text-capitalize">@Model.Description</p>

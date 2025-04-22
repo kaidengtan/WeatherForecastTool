@@ -4,6 +4,7 @@ namespace WeatherApp.Models
 {
     public class WeatherData
     {
+        public string Date { get; set; }
         public string City { get; set; }
         public string Country { get; set; }
         public double Temperature { get; set; }
@@ -21,6 +22,7 @@ namespace WeatherApp.Models
         public Wind Wind { get; set; }
         public Sys Sys { get; set; }
         public string Name { get; set; }
+        public int Dt { get; set; }
     }
 
     public class WeatherMain
