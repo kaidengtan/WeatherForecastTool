@@ -1,28 +1,30 @@
 ﻿@{
     ViewData["Title"] = "Weather Forecast Tool";
     var cityList = new List<string>
-{
-    "Kuala Lumpur", "Singapore", "Tokyo", "Bangkok", "New York", "London", "Paris", "Jakarta", "Sydney", "Hong Kong"
-};
+    {
+        "Kuala Lumpur", "Singapore", "Tokyo", "Bangkok", "New York", "London", "Paris", "Jakarta", "Sydney", "Hong Kong"
+    };
 }
+
+<!-- Optional FontAwesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <div class="card">
+            <div class="card shadow rounded">
                 <div class="card-header bg-primary text-white">
-                    <h1 class="text-center">Weather Forecast Tool</h1>
+                    <h2 class="text-center"><i class="fas fa-cloud-sun me-2"></i>Weather Forecast Tool</h2>
                 </div>
                 <div class="card-body">
                     @if (ViewBag.ErrorMessage != null)
                     {
-                        <div class="alert alert-danger">
-                            @ViewBag.ErrorMessage
-                        </div>
+                        <div class="alert alert-danger">@ViewBag.ErrorMessage</div>
                     }
+
                     <form asp-action="GetWeather" method="post">
-                        <div class="form-group">
-                            <label for="city">Select City:</label>
+                        <div class="form-group mb-3">
+                            <label for="city" class="form-label">Select City:</label>
                             <select class="form-control" id="city" name="city" required>
                                 <option value="">-- Select a city --</option>
                                 @foreach (var city in cityList)
@@ -31,10 +33,21 @@
                                 }
                             </select>
                         </div>
-                        <button type="submit" class="btn btn-primary mt-3 w-100">Get Weather</button>
+
+                        <button type="submit" class="btn btn-primary w-100 transition">Get Weather</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<style>
+    .transition {
+        transition: background-color 0.2s ease-in-out;
+    }
+
+        .transition:hover {
+            background-color: #0d6efdcc; /* Slightly lighter on hover */
+        }
+</style>
