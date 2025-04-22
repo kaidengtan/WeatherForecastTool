@@ -5,5 +5,6 @@
 🔧 Features:
 - Fetches live weather data via API
 - Dropdown for city selection
+- Displays current weather and 5-day forecast
 - Responsive UI with Bootstrap
 - Light/Dark mode toggle
