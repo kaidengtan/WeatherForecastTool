@@ -1,0 +1,73 @@
+﻿@model WeatherApp.Models.WeatherData
+
+@{
+    ViewData["Title"] = "Weather - " + Model.City;
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h1 class="text-center">Weather for @Model.City, @Model.Country</h1>
+                </div>
+                <div class="card-body">
+                    <div class="text-center mb-4">
+                        <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="Weather Icon">
+                        <h2>@Math.Round(Model.Temperature)°C</h2>
+                        <p class="lead text-capitalize">@Model.Description</p>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="card mb-3">
+                                <div class="card-body">
+                                    <h5 class="card-title">Wind</h5>
+                                    <p class="card-text">@Model.WindSpeed m/s</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="card mb-3">
+                                <div class="card-body">
+                                    <h5 class="card-title">Humidity</h5>
+                                    <p class="card-text">@Model.Humidity%</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a asp-action="Index" class="btn btn-primary w-100">Search Another City</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@* <script>
+    window.onload = function () {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition, showError);
+        } else {
+            console.log("Geolocation is not supported by this browser.");
+        }
+    }
+
+    function showPosition(position) {
+        const lat = position.coords.latitude;
+        const lon = position.coords.longitude;
+
+        // Send data to backend using fetch
+        fetch(`/Weather/GetWeatherByLocation?lat=${lat}&lon=${lon}`)
+            .then(response => response.text())
+            .then(html => {
+                document.body.innerHTML = html;
+            })
+            .catch(err => console.log("Error fetching weather: " + err));
+    }
+
+    function showError(error) {
+        console.log("Geolocation error: ", error.message);
+    }
+</script>
+ *@

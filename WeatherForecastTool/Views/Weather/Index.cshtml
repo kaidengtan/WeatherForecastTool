@@ -1,0 +1,40 @@
+﻿@{
+    ViewData["Title"] = "Weather Forecast Tool";
+    var cityList = new List<string>
+{
+    "Kuala Lumpur", "Singapore", "Tokyo", "Bangkok", "New York", "London", "Paris", "Jakarta", "Sydney", "Hong Kong"
+};
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h1 class="text-center">Weather Forecast Tool</h1>
+                </div>
+                <div class="card-body">
+                    @if (ViewBag.ErrorMessage != null)
+                    {
+                        <div class="alert alert-danger">
+                            @ViewBag.ErrorMessage
+                        </div>
+                    }
+                    <form asp-action="GetWeather" method="post">
+                        <div class="form-group">
+                            <label for="city">Select City:</label>
+                            <select class="form-control" id="city" name="city" required>
+                                <option value="">-- Select a city --</option>
+                                @foreach (var city in cityList)
+                                {
+                                    <option value="@city">@city</option>
+                                }
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary mt-3 w-100">Get Weather</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
