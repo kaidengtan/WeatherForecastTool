@@ -18,7 +18,7 @@
                 <div class="card-body">
                     <!-- Current Weather Info -->
                     <div class="text-center mb-4">
-                        <h2>@Model.Date</h2>
+                        <h2 class="card-title fw-semibold">@Model.Date</h2>
                         <img src="@($"http://openweathermap.org/img/wn/{Model.Icon}@2x.png")" alt="Weather Icon" class="mb-2" />
                         <h2>@Math.Round(Model.Temperature)°C</h2>
                         <p class="lead text-capitalize">@Model.Description</p>
@@ -63,7 +63,7 @@
                     <div class="card-body">
                         @if (DateTime.TryParse(forecast.Date, out DateTime parsedDate))
                         {
-                            <h6 class="card-title fw-semibold">@parsedDate.ToString("ddd, MMM dd HH:mm")</h6>
+                            <h6 class="card-title fw-semibold">@parsedDate.AddHours(8).ToString("ddd, MMM dd HH:mm")</h6>
                         }
                         else
                         {
